@@ -3,13 +3,11 @@
 var mysql = require('../db.js');
 
 var Entry = function(entry){
-   this.id = entry.id;
+   this.proc_id = entry.proc_id;
    this.scen_name = entry.scen_name;
    this.pm_name = entry.pm_name;
-   this.count_succ = entry.count_succ;
-   this.count_abort = entry.count_abort;
-   this.lp_id = entry.lp_id;
-   this.lp_dur = entry.lp_dur;
+   this.proc_state = entry.proc_state;
+   this.proc_dur = entry.proc_dur;
 };
 
 Entry.postData = function(new_entry, result){
@@ -19,6 +17,16 @@ Entry.postData = function(new_entry, result){
             result(err, null);
         } else {
             result(null, res.insertId);
+
+            mysql.query("delete from test_data where proc_end < DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 30 SECOND)",function(err, res){
+                if(err){
+                    console.log("error: ", err);
+                    result(err, null);
+                } else {
+                    result(null, res.insertId);
+                }
+            });
+
         }
     });    
 };
