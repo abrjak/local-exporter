@@ -7,3 +7,17 @@ local_dur_total{scen="$scen", state="1"} > (avg_over_time(local_dur_total{scen="
 count_over_time(local_dur_total{scen="$scen", state="1"} > ((avg_over_time(local_dur_total{scen="$scen", state="1"}[15m])) * 1.25)[15m:])
 
 sum(clamp_max(count_over_time(local_dur_total{scen="$scen", state="3"}[15m]), 1) + clamp_max(count_over_time(local_dur_total{scen="$scen", state="3"} > ((avg_over_time(local_dur_total{scen="$scen", state="3"}[15m])) * 1.25)[15m:]), 1))
+
+-> mehrfache queries benötigt. eine, die null abfängt, und eine nicht. grafana stellt imer die dar, die nicht null ergibt am schluss
+
+count fail:
+1 - count_over_time(local_dur_total{scen="$scen", state="3"}[15m]) - 1
+2 - absent(count_over_time(local_dur_total{scen="$scen", state="3"}[15m]))
+
+count overtime:
+1 - count_over_time(local_dur_total{scen="$scen", state="1"} > ((avg_over_time(local_dur_total{scen="$scen", state="1"}[15m])) * 1.25)[15m:])
+2 - absent(count_over_time(local_dur_total{scen="$scen", state="1"} > ((avg_over_time(local_dur_total{scen="$scen", state="1"}[15m])) * 1.25)[15m:])) - 1
+
+calc traffic light:
+
+graylog
