@@ -21,6 +21,9 @@ exports.post_data = function(req, res){
     });
 };
 
+
+// Entry Generator
+
 setInterval(autoPoster, 15000);
 
 function autoPoster(){
