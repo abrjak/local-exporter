@@ -28,23 +28,37 @@ function autoPoster(){
     // random entry 1
     var dur = Math.floor(Math.random() * 100) + 1;
     var state = Math.floor(Math.random() * 3) + 1;
+    var newEntry;
 
-    var newEntry = JSON.parse('{"scen_name":"test", "pm_name":"pm_test", "proc_state":' + state + ', "proc_dur":' + dur + '}');
+    if(state == 3){
+        newEntry = JSON.parse('{"scen_name":"test", "pm_name":"pm_test", "proc_state":' + state + ', "proc_dur":' + dur + ', "errmsg":"err in pm_test"}');
+    } else {
+        newEntry = JSON.parse('{"scen_name":"test", "pm_name":"pm_test", "proc_state":' + state + ', "proc_dur":' + dur + '}');
+    }    
 
     Entry.postData(newEntry, function(err, user){});
 
     // random entry 2
     dur = Math.floor(Math.random() * 100) + 1;
 
-    newEntry = JSON.parse('{"scen_name":"test", "pm_name":"pm_main", "proc_state":' + state + ', "proc_dur":' + dur + '}');
+    if(state == 3){
+        newEntry = JSON.parse('{"scen_name":"test", "pm_name":"pm_main", "proc_state":' + state + ', "proc_dur":' + dur + ', "errmsg":"err in pm_main"}');
+    } else {
+        newEntry = JSON.parse('{"scen_name":"test", "pm_name":"pm_main", "proc_state":' + state + ', "proc_dur":' + dur + '}');
+    }   
 
     Entry.postData(newEntry, function(err, user){});
+
 
     // random entry 3
     dur = Math.floor(Math.random() * 100) + 1;
     state = Math.floor(Math.random() * 3) + 1;
 
-    newEntry = JSON.parse('{"scen_name":"error_test", "pm_name":"pm_error", "proc_state":' + state + ', "proc_dur":' + dur + '}');
+    if (state == 3){
+        newEntry = JSON.parse('{"scen_name":"error_test", "pm_name":"pm_error", "proc_state":' + state + ', "proc_dur":' + dur + ', "errmsg": "err in pm_error"}');
+    } else {
+        newEntry = JSON.parse('{"scen_name":"error_test", "pm_name":"pm_error", "proc_state":' + state + ', "proc_dur":' + dur + '}');
+    }    
 
     Entry.postData(newEntry, function(err, user){});
 
@@ -54,5 +68,4 @@ function autoPoster(){
     newEntry = JSON.parse('{"scen_name":"all_right", "pm_name":"pm_perfect", "proc_state":"1", "proc_dur":' + dur + '}');
 
     Entry.postData(newEntry, function(err, user){});
-
 };

@@ -8,6 +8,7 @@ var Entry = function(entry){
    this.pm_name = entry.pm_name;
    this.proc_state = entry.proc_state;
    this.proc_dur = entry.proc_dur;
+   this.errmsg = entry.errmsg;
 };
 
 Entry.postData = function(new_entry, result){
