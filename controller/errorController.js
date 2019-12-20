@@ -30,6 +30,9 @@ exports.get_search = function(req, res){
     res.end();
 };
 
+exports.post_query = function(req, res){
+
+};
 
 // Entry Generator
 

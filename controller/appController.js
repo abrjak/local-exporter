@@ -25,10 +25,17 @@ exports.post_data = function(req, res){
 // Entry Generator
 
 setInterval(autoPoster, 15000);
+setInterval(randomError, 60000);
+
+function randomError(){
+    var dur = 25;
+    var newEntry = JSON.parse('{"scen_name":"all_right", "pm_name":"pm_perfect", "proc_state":"3", "proc_dur":' + dur + ', "errmsg":"err in pm_main"}');
+    Entry.postData(newEntry, function(err, user){});
+}
 
 function autoPoster(){
 
-    // random entry 1
+       // random entry 1
     var dur = Math.floor(Math.random() * 100) + 1;
     var state = Math.floor(Math.random() * 3) + 1;
     var newEntry;
@@ -69,6 +76,8 @@ function autoPoster(){
     //dur = Math.floor(Math.random() * 15) + 10;
     dur = 10;
     newEntry = JSON.parse('{"scen_name":"all_right", "pm_name":"pm_perfect", "proc_state":"1", "proc_dur":' + dur + '}');
+    Entry.postData(newEntry, function(err, user){});
 
+    newEntry = JSON.parse('{"scen_name":"all_right", "pm_name":"pm_perfect", "proc_state":"2", "proc_dur":' + (dur+5) + '}');
     Entry.postData(newEntry, function(err, user){});
 };

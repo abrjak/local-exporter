@@ -29,13 +29,9 @@ ErrDetail.getErrDetail = function(result){
             result(null, err);
         } else {
 
-            if(rows.length == 0){
-                console.log('No Errors this Scrape');
-            }
-
             rows.forEach(function(row){
 
-                console.log(row.proc_id, row.scen_name, row.pm_name);
+                //console.log(row.proc_id, row.scen_name, row.pm_name);
                 
 
             });

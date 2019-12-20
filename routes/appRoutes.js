@@ -18,4 +18,7 @@ module.exports = function(app){
 
     app.route('/search')
         .post(ctrl_err.get_search);
+
+    app.route('/query')
+        .post(ctrl_err.post_query);
 };
