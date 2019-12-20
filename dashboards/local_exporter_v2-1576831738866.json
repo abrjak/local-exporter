@@ -1,0 +1,453 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": false,
+        "iconColor": "#E02F44",
+        "limit": 100,
+        "name": "Annotations & Alerts",
+        "showIn": 0,
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 2,
+  "iteration": 1576830883402,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "panels": [],
+      "repeat": "scen",
+      "scopedVars": {
+        "scen": {
+          "selected": true,
+          "text": "error_test",
+          "value": "error_test"
+        }
+      },
+      "title": "Details for $scen",
+      "type": "row"
+    },
+    {
+      "aliasColors": {
+        "average process duration": "semi-dark-green",
+        "current process duration": "semi-dark-blue",
+        "processes with overtime": "semi-dark-red",
+        "{group=\"dev\",instance=\"localhost:8090\",job=\"local-exporter\",pm=\"pm_error\",scen=\"error_test\",state=\"3\"}": "semi-dark-orange"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 4,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "scen": {
+          "selected": true,
+          "text": "error_test",
+          "value": "error_test"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "local_dur_total{scen=\"$scen\", state=\"1\"}",
+          "legendFormat": "current process duration",
+          "refId": "A"
+        },
+        {
+          "expr": "avg_over_time(local_dur_total{scen=\"$scen\", state=\"1\"}[${__range_s}s])",
+          "legendFormat": "average process duration",
+          "refId": "B"
+        },
+        {
+          "expr": "local_dur_total{scen=\"$scen\", state=\"1\"} > (avg_over_time(local_dur_total{scen=\"$scen\", state=\"1\"}[${__range_s}s])) * 1.25",
+          "legendFormat": "processes with overtime",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Process Details with State 1",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "average process duration": "semi-dark-green",
+        "current process duration": "semi-dark-blue",
+        "processes with overtime": "semi-dark-red",
+        "{group=\"dev\",instance=\"localhost:8090\",job=\"local-exporter\",pm=\"pm_error\",scen=\"error_test\",state=\"3\"}": "semi-dark-orange"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 6,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "scen": {
+          "selected": true,
+          "text": "error_test",
+          "value": "error_test"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "local_dur_total{scen=\"$scen\", state=\"2\"}",
+          "legendFormat": "current process duration",
+          "refId": "A"
+        },
+        {
+          "expr": "avg_over_time(local_dur_total{scen=\"$scen\", state=\"2\"}[${__range_s}s])",
+          "legendFormat": "average process duration",
+          "refId": "B"
+        },
+        {
+          "expr": "local_dur_total{scen=\"$scen\", state=\"2\"} > (avg_over_time(local_dur_total{scen=\"$scen\", state=\"2\"}[${__range_s}s])) * 1.25",
+          "legendFormat": "processes with overtime",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Process Details with State 2",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "average process duration": "semi-dark-green",
+        "current process duration": "semi-dark-blue",
+        "processes with overtime": "semi-dark-red",
+        "{group=\"dev\",instance=\"localhost:8090\",job=\"local-exporter\",pm=\"pm_error\",scen=\"error_test\",state=\"3\"}": "semi-dark-orange"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "hiddenSeries": false,
+      "id": 5,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "scopedVars": {
+        "scen": {
+          "selected": true,
+          "text": "error_test",
+          "value": "error_test"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "local_dur_total{scen=\"$scen\", state=\"3\"}",
+          "legendFormat": "current process duration",
+          "refId": "A"
+        },
+        {
+          "expr": "avg_over_time(local_dur_total{scen=\"$scen\", state=\"3\"}[${__range_s}s])",
+          "legendFormat": "average process duration",
+          "refId": "B"
+        },
+        {
+          "expr": "local_dur_total{scen=\"$scen\", state=\"3\"} > (avg_over_time(local_dur_total{scen=\"$scen\", state=\"3\"}[${__range_s}s])) * 1.25",
+          "legendFormat": "processes with overtime",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Process Details with State 3",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 21,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "tags": [],
+          "text": "error_test",
+          "value": [
+            "error_test"
+          ]
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(scen)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "scenario",
+        "multi": true,
+        "name": "scen",
+        "options": [
+          {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          {
+            "selected": false,
+            "text": "all_right",
+            "value": "all_right"
+          },
+          {
+            "selected": true,
+            "text": "error_test",
+            "value": "error_test"
+          },
+          {
+            "selected": false,
+            "text": "test",
+            "value": "test"
+          }
+        ],
+        "query": "label_values(scen)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "local_exporter_v2",
+  "uid": "_T3KeaBWz",
+  "version": 4
+}
